@@ -3,6 +3,8 @@ target
 /backup/
 !.mvn/wrapper/maven-wrapper.jar
 .txt
+testpack
+Destination/
 
 ### STS ###
 .apt_generated

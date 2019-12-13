@@ -1,4 +1,4 @@
-package ru.itpark.service;
+package ru.itpark.testpack.searcher;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Part;
@@ -7,10 +7,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.UUID;
 
-public class FileService {
+public class FileService2 {
     private final String uploadPath;
 
-    public FileService() throws IOException {
+    public FileService2() throws IOException {
         uploadPath = System.getenv("UPLOAD_PATH");
         Files.createDirectories(Paths.get(uploadPath));
     }
