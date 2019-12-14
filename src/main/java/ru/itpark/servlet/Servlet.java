@@ -25,7 +25,7 @@ public class Servlet extends HttpServlet {
 //    }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+    public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         resp.setContentType("text/html");
         String text = req.getParameter("text");
@@ -42,4 +42,5 @@ public class Servlet extends HttpServlet {
 
         }
     }
+
 }

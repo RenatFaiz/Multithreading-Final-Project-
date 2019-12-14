@@ -1,5 +1,7 @@
 package ru.itpark.service;
 
+import ru.itpark.servlet.Servlet;
+
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -11,7 +13,8 @@ import java.util.Scanner;
 
 public class FileVisitor extends SimpleFileVisitor<Path> {
 
-    String searchString = "HTTP";
+
+    private String searchString;
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -34,5 +37,9 @@ public class FileVisitor extends SimpleFileVisitor<Path> {
         System.out.println("Number of matches: " + wordsCounter + "\n");
 
         return FileVisitResult.CONTINUE;
+    }
+
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
     }
 }

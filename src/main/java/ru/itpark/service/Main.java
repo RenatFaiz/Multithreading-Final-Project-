@@ -9,15 +9,16 @@ import java.nio.file.Paths;
 public class Main {
     public static void main(String[] args) throws IOException {
         TextSearch fileSearch = new TextSearch();
-        final FileService fileService = new FileService();
-
 
         //String path = "Destination/rfc1945.txt";
         //String path = "Destination/test.txt";
         Path path  = Paths.get("Destination/");
         String searchString = "am";
 
-        Files.walkFileTree(path, new FileVisitor());
+        final FileVisitor visitor = new FileVisitor();
+        visitor.setSearchString("HTTP");
+
+        Files.walkFileTree(path, visitor);
        // fileSearch.parseFile(path, searchString);
        // fileSearch.parseFilePattern("Am am amama", "am");
 
