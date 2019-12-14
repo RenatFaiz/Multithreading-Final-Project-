@@ -26,13 +26,13 @@ public class TextSearch {
 //            }
 //        }
 //         System.out.println("Number of matches: " + wordsCounter);
-//    }
-//
-//    public void parseFilePattern(String text, String searchString) {
-//        Pattern pattern = Pattern.compile(searchString);
-//        Matcher matcher = pattern.matcher(text);
-//        while (matcher.find()) {
-//            System.out.println(matcher.group());
-//        }
+    }
+
+    public void parseFilePattern(String text, String searchString) {
+        Pattern pattern = Pattern.compile(searchString);
+        Matcher matcher = pattern.matcher(text);
+        while (matcher.find()) {
+            System.out.println(matcher.group());
+        }
    }
 }
