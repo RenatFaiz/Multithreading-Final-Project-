@@ -31,10 +31,11 @@ public class Servlet extends HttpServlet {
         String text = req.getParameter("text");
         String file = req.getParameter("file");
 
-        if (text == null && file == null) {
-            String path = req.getContextPath() + "/notfound";
-            resp.sendRedirect(path);
-        }
+        // req.getRequestDispatcher("/index.jsp").forward(req, resp);
+//        if (text == null && file == null) {
+//            String path = req.getContextPath() + "/notfound";
+//            resp.sendRedirect(path);
+//        }
 
         try (PrintWriter writer = resp.getWriter()) {
             writer.println("<p>Searching text: " + text + "</p>");
