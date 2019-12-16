@@ -9,11 +9,14 @@
     <title>RFC Searcher</title>
 </head>
 <body>
-<form enctype="multipart/form-data" action="search" method="POST">
+<form action="result.jsp" method="POST">
     <h2>Search form</h2>
     Text: <input name="text"/>
+    <br><br>
     File: <input type="file" name ="file" multiple accept="text/plain"/>
     <input type="submit" value="find"/>
 </form>
 </body>
 </html>
+
+<!--enctype="multipart/form-data"-->

@@ -8,10 +8,7 @@ import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        TextSearch fileSearch = new TextSearch();
 
-        //String path = "Destination/rfc1945.txt";
-        //String path = "Destination/test.txt";
         Path path  = Paths.get("Destination/");
         String searchString = "am";
 
