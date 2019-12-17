@@ -10,14 +10,20 @@ import java.nio.file.Paths;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Path path  = Paths.get("Destination/");
-        String searchString = "am";
+//        Path path  = Paths.get("Destination/");
+//        String searchString = "am";
+//
+//        final FileVisitor visitor = new FileVisitor();
+//        visitor.setSearchString("HTTP");
+//
+//        Files.walkFileTree(path, visitor);
+//        System.out.println(visitor.getResult());
 
-        final FileVisitor visitor = new FileVisitor();
-        visitor.setSearchString("HTTP");
+        Path path2 = Paths.get("Destination/test.txt");
+        final FileVisitor2 visitor2 = new FileVisitor2();
+        visitor2.setSearchString("am");
+        Files.walkFileTree(path2, visitor2);
 
-        Files.walkFileTree(path, visitor);
-        System.out.println(visitor.getResult());
        // fileSearch.parseFile(path, searchString);
        // fileSearch.parseFilePattern("Am am amama", "am");
 

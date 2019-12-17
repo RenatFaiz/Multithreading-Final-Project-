@@ -43,6 +43,8 @@ public class FileVisitor extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
+
+
     public void setSearchString(String searchString) {
         this.searchString = searchString;
     }
