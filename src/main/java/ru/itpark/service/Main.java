@@ -19,9 +19,9 @@ public class Main {
 //        Files.walkFileTree(path, visitor);
 //        System.out.println(visitor.getResult());
 
-        Path path2 = Paths.get("Destination/test.txt");
+        Path path2 = Paths.get("Destination/");
         final FileVisitor2 visitor2 = new FileVisitor2();
-        visitor2.setSearchString("am");
+        visitor2.setSearchString("HTTP");
         Files.walkFileTree(path2, visitor2);
 
        // fileSearch.parseFile(path, searchString);

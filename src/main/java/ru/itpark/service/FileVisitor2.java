@@ -23,22 +23,21 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
         int wordsCounter = 0;
-        try (FileWriter writer = new FileWriter("result.txt", false);
-             BufferedReader reader = new BufferedReader (new FileReader(file.toString()))) {
+        try (FileWriter writer = new FileWriter("result.txt", true);
+             BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
 
-
+            writer.write(file.getFileName().toString() + ": ");
             String s;
             while ((s = reader.readLine()) != null) {
-                if(s.contains(searchString)) {
+                if (s.contains(searchString)) {
                     writer.write(s + "\n");
+                    wordsCounter++;
                 }
             }
-//
 
-            //writer.write();
-            //System.out.println(wordsCounter);
+            writer.write("Number of matches: " + wordsCounter + "\n");
         }
-
+        System.out.println("Number of matches: " + wordsCounter + "\n");
 
         return FileVisitResult.CONTINUE;
     }
