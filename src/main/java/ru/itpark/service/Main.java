@@ -2,6 +2,7 @@ package ru.itpark.service;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,6 +17,7 @@ public class Main {
         visitor.setSearchString("HTTP");
 
         Files.walkFileTree(path, visitor);
+        System.out.println(visitor.getResult());
        // fileSearch.parseFile(path, searchString);
        // fileSearch.parseFilePattern("Am am amama", "am");
 

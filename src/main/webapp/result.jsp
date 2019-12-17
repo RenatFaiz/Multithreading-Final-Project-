@@ -15,19 +15,21 @@
 <p> Text for search: <%= request.getParameter("text") %>
 </p>
 <p> Buffered: <%= request.getReader().lines() %>
-</p>
-<p><% final FileVisitor visitor = new FileVisitor();
-    Path path = Paths.get("D:\\Coding\\Destination");
-    Path path1 = Paths.get("Destination/").toAbsolutePath();
-    String textForSearch = request.getParameter("text");
-    out.println(textForSearch);
-    visitor.setSearchString(textForSearch);
+</p> Ok </p>
+<p> Text: ${results[0]} </p>
+<p> Text: ${results} </p>
+<%--<p><% final FileVisitor visitor = new FileVisitor();--%>
+<%--    Path path = Paths.get("D:\\Coding\\Destination");--%>
+<%--    Path path1 = Paths.get("Destination/").toAbsolutePath();--%>
+<%--    String textForSearch = request.getParameter("text");--%>
+<%--    out.println(textForSearch);--%>
+<%--    visitor.setSearchString(textForSearch);--%>
 
-    PrintWriter writer = response.getWriter();
-    writer.println(Files.walkFileTree(path, visitor));
-    out.println(path);
-    out.println(path1);
-%>
-</p>
+<%--    PrintWriter writer = response.getWriter();--%>
+<%--    writer.println(Files.walkFileTree(path, visitor));--%>
+<%--    out.println(path);--%>
+<%--    out.println(path1);--%>
+<%--%>--%>
+
 </body>
 </html>
