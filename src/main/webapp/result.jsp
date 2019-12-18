@@ -14,10 +14,11 @@
 <h2>Searching results</h2>
 <p> Text for search: <%= request.getParameter("text") %>
 </p>
-<p> Buffered: <%= request.getReader().lines() %>
-</p> Ok </p>
+<%--<p> Buffered: <%= request.getReader().lines() %>--%>
+<%--</p> --%>
+<p>Ok </p>
 <%--<p> Text: ${results[0]} </p>--%>
-<p> Number of matches: ${counter} </p>
+<%--<p> Number of matches: ${counter} </p>--%>
 <%--<p><% final FileVisitor visitor = new FileVisitor();--%>
 <%--    Path path = Paths.get("D:\\Coding\\Destination");--%>
 <%--    Path path1 = Paths.get("Destination/").toAbsolutePath();--%>
