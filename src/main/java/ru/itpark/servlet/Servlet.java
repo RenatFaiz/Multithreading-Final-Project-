@@ -45,9 +45,12 @@ public class Servlet extends HttpServlet {
 
         for (Part part : req.getParts()) {
             String fileName = part.getSubmittedFileName();
-            System.out.println("Write attachment to file: " + fileName);
-            String filePath =fullSavePath + "/" + fileName;
-            part.write(filePath);
+            //if (part.getSubmittedFileName().startsWith("filename"))
+            if (fileName != null && fileName.length() > 0) {
+                System.out.println("Write attachment to file: " + fileName);
+                String filePath =fullSavePath + "/" + fileName;
+                part.write(filePath);
+            }
         }
 
 //        if (appPath.endsWith("\"")) {
