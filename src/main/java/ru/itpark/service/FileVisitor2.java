@@ -17,16 +17,17 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
     private String searchString;
     private List<String> result = new ArrayList<>();
-    private int wordsCounter = 0;
+
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
 
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Coding/result.txt", true));
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Coding/Destination/result.txt", true));
              BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
 
             writer.write(file.getFileName().toString() + ": ");
+            int wordsCounter = 0;
             String s;
             while ((s = reader.readLine()) != null) {
                 if (s.contains(searchString)) {
@@ -37,7 +38,6 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
             writer.write("Number of matches: " + wordsCounter + "\n");
         }
-        System.out.println("Number of matches: " + wordsCounter + "\n");
 
         return FileVisitResult.CONTINUE;
     }
@@ -51,9 +51,9 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
         return result;
     }
 
-    public int getWordsCounter() {
-        return wordsCounter;
-    }
+   // public int getWordsCounter() {
+//        return wordsCounter;
+//    }
 }
 
 //    Pattern pattern = Pattern.compile(searchString);
