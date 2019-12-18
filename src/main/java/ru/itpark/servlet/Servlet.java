@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -39,6 +40,16 @@ public class Servlet extends HttpServlet {
 
         // The directory to save uploaded file
         String fullSavePath = appPath + SAVE_DIRECTORY;
+        Path upload = Paths.get(fullSavePath);
+        Files.createDirectories(upload);
+
+        for (Part part : req.getParts()) {
+            String fileName = part.getSubmittedFileName();
+            System.out.println("Write attachment to file: " + fileName);
+            String filePath =fullSavePath + "/" + fileName;
+            part.write(filePath);
+        }
+
 //        if (appPath.endsWith("\"")) {
 //            fullSavePath = appPath + SAVE_DIRECTORY;
 //        } else {
@@ -46,10 +57,10 @@ public class Servlet extends HttpServlet {
 //        }
 
         // Creates the save directory if it does not exists
-        File fileSaveDir = new File(fullSavePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdir();
-        }
+//        File fileSaveDir = new File(fullSavePath);
+//        if (!fileSaveDir.exists()) {
+//            fileSaveDir.mkdir();
+//        }
 
 
 //        final FileVisitor visitor = new FileVisitor();
