@@ -36,7 +36,7 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
                 }
             }
 
-            writer.write("Number of matches: " + wordsCounter + "\n");
+            writer.write("Number of matches: " + wordsCounter + "\n\n");
         }
         Files.delete(file);
         return FileVisitResult.CONTINUE;
