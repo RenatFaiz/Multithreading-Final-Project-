@@ -1,6 +1,7 @@
 package ru.itpark.servlet;
 
 import ru.itpark.service.FileVisitor;
+import ru.itpark.service.FileVisitor2;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -23,19 +24,22 @@ public class Servlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         resp.setContentType("text/html");
-
-        final FileVisitor visitor = new FileVisitor();
         Path path = Paths.get("D:\\Coding\\Destination");
         Path path1 = Paths.get("Destination/").toAbsolutePath();
 
+        final FileVisitor visitor = new FileVisitor();
+        final FileVisitor2 visitor2 = new FileVisitor2();
+
         String textForSearch = req.getParameter("text");
         System.out.println(textForSearch);
-        visitor.setSearchString(textForSearch);
+        visitor2.setSearchString(textForSearch);
 
         //PrintWriter writer = resp.getWriter();
-        Files.walkFileTree(path, visitor);
-        List<String> results = visitor.getResult();
-        req.setAttribute("results", results);
+        Files.walkFileTree(path, visitor2);
+        int wordsCounter = visitor2.getWordsCounter();
+        req.setAttribute("counter", wordsCounter);
+//        List<String> results = visitor.getResult();
+//        req.setAttribute("results", results);
         getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
 
 //        String page = "/result.jsp";

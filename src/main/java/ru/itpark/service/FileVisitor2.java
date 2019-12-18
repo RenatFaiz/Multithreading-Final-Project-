@@ -17,13 +17,13 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
     private String searchString;
     private List<String> result = new ArrayList<>();
-
+    private int wordsCounter = 0;
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
-        int wordsCounter = 0;
-        try (FileWriter writer = new FileWriter("result.txt", true);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Coding/result.txt", true));
              BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
 
             writer.write(file.getFileName().toString() + ": ");
@@ -49,6 +49,10 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
     public List<String> getResult() {
         return result;
+    }
+
+    public int getWordsCounter() {
+        return wordsCounter;
     }
 }
 

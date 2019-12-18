@@ -16,8 +16,8 @@
 </p>
 <p> Buffered: <%= request.getReader().lines() %>
 </p> Ok </p>
-<p> Text: ${results[0]} </p>
-<p> Text: ${results} </p>
+<%--<p> Text: ${results[0]} </p>--%>
+<p> Number of matches: ${counter} </p>
 <%--<p><% final FileVisitor visitor = new FileVisitor();--%>
 <%--    Path path = Paths.get("D:\\Coding\\Destination");--%>
 <%--    Path path1 = Paths.get("Destination/").toAbsolutePath();--%>
