@@ -31,14 +31,14 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
             String s;
             while ((s = reader.readLine()) != null) {
                 if (s.contains(searchString)) {
-                    writer.write(s + "\n");
+                    writer.write(s.strip() + "\n");
                     wordsCounter++;
                 }
             }
 
             writer.write("Number of matches: " + wordsCounter + "\n");
         }
-
+        Files.delete(file);
         return FileVisitResult.CONTINUE;
     }
 

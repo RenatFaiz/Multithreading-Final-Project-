@@ -52,6 +52,7 @@ public class Servlet extends HttpServlet {
         System.out.println(textForSearch);
         visitor2.setSearchString(textForSearch);
         Files.walkFileTree(uploadPath, visitor2);
+        Files.deleteIfExists(uploadPath);
 
 //        //PrintWriter writer = resp.getWriter();
 //
