@@ -31,7 +31,7 @@ public class Main {
 
         String absolutePath = new File(".").getAbsolutePath();
 
-        System.out.println(absolutePath);
+        System.out.println("Абсолютный путь! " + absolutePath);
 
 
         //System.out.println(System.getenv());

@@ -33,8 +33,8 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
         // Files.createDirectories()
 // "D:/Coding/Destination/result.txt"
         // System.out.println(servlet.getFullResultDirectory());
-        System.out.println(file);
-        System.out.println(resultsPath);
+        System.out.println("Визитор: файл для поиска " + file);
+        System.out.println("Визитор: файл с результатами " + resultsPath);
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter((resultsPath), true));
              BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
@@ -52,7 +52,7 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
             writer.write("Number of matches: " + stringsCounter + "\n\n");
         }
-        Files.delete(file);
+        Files.deleteIfExists(file);
         return FileVisitResult.CONTINUE;
     }
 

@@ -22,8 +22,7 @@ public class Servlet extends HttpServlet {
 
     private String saveDirectory = "upload";
     private String resultDirectory = "result";
-    private String resultFile = "result/results.txt";
-
+    private String resultFile = "results.txt";
 
 
     @Override
@@ -34,7 +33,7 @@ public class Servlet extends HttpServlet {
         // Gets absolute path to root directory of web app.
         String appPath = req.getServletContext().getRealPath("");
 //        appPath = appPath.replace('\\', '/');
-
+        System.out.println("Директория приложения " + appPath);
 //        System.out.println(getServletContext());
 //        System.out.println(getServletConfig());
 //        ServletContext context = getServletContext();
@@ -45,12 +44,16 @@ public class Servlet extends HttpServlet {
         Path uploadPath = Paths.get(fullSavePath);
         Files.createDirectories(uploadPath);
 
+        // The directory to results folder
         String fullResultDirectory = appPath + resultDirectory;
         Path resultPath = Paths.get(fullResultDirectory);
         Files.createDirectories(resultPath);
 
-//        Path resultFile = Paths.get(fullResultDirectory + result)
-//        Files.deleteIfExists(resultPath);
+        // Path to file with searching results
+        String resultFilePath = fullResultDirectory + "/" + resultFile;
+        Path resultFile = Paths.get(resultFilePath);
+        System.out.println("Путь к файлу c результатами: " + resultFilePath);
+        Files.deleteIfExists(resultFile);
 
 
         for (Part part : req.getParts()) {
@@ -68,7 +71,7 @@ public class Servlet extends HttpServlet {
 
         String textForSearch = req.getParameter("text");
         System.out.println("Searching text: " + textForSearch);
-        System.out.println(appPath);
+
         visitor2.setSearchString(textForSearch);
         Files.walkFileTree(uploadPath, visitor2);
 
@@ -91,7 +94,6 @@ public class Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
-
 
 
 }

@@ -15,7 +15,7 @@ public class NotFoundServlet extends HttpServlet {
         resp.setContentType("text/html");
 
         try(PrintWriter writer = resp.getWriter()) {
-            writer.println("<p> Enter text and file </p>");
+            writer.println("<p> Something went wrong...( </p>");
         }
     }
 }
