@@ -50,9 +50,9 @@ public class Servlet extends HttpServlet {
 
         String textForSearch = req.getParameter("text");
         System.out.println(textForSearch);
+        System.out.println(appPath);
         visitor2.setSearchString(textForSearch);
         Files.walkFileTree(uploadPath, visitor2);
-
 
 //        //PrintWriter writer = resp.getWriter();
 //
@@ -73,4 +73,6 @@ public class Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
+
+
 }

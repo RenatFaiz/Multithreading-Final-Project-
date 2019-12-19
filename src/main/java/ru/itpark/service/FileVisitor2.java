@@ -26,6 +26,7 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Coding/Destination/result.txt", true));
              BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
 
+
             writer.write(file.getFileName().toString() + ": ");
             int wordsCounter = 0;
             String s;
