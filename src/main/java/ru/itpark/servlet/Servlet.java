@@ -77,8 +77,9 @@ public class Servlet extends HttpServlet {
 
 //        //PrintWriter writer = resp.getWriter();
 //
-//        int wordsCounter = visitor2.getWordsCounter();
-//        req.setAttribute("counter", wordsCounter);
+
+        req.setAttribute("counter", visitor2.getMatchesCounter());
+        req.setAttribute("results", resultFilePath);
 //        List<String> results = visitor.getResult();
 //        req.setAttribute("results", results);
         getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);

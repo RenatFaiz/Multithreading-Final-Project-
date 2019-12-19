@@ -10,10 +10,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Timer;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +19,8 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
 
     private String searchString;
-    private Servlet servlet;
+    private int matchesCounter;
+
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
@@ -49,6 +47,7 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
                     stringsCounter++;
                 }
             }
+            matchesCounter += stringsCounter;
 
             writer.write("Number of matches: " + stringsCounter + "\n\n");
         }
@@ -61,10 +60,9 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
         this.searchString = searchString;
     }
 
-
-    // public int getWordsCounter() {
-//        return wordsCounter;
-//    }
+    public int getMatchesCounter() {
+        return matchesCounter;
+    }
 }
 
 //    Pattern pattern = Pattern.compile(searchString);
