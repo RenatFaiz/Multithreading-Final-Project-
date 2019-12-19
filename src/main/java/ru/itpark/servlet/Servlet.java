@@ -21,7 +21,10 @@ import java.nio.file.Paths;
 public class Servlet extends HttpServlet {
 
     private String saveDirectory = "upload";
-    private String resultDirectory = "results";
+    private String resultDirectory = "result";
+    private String resultFile = "result/results.txt";
+
+
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -42,8 +45,13 @@ public class Servlet extends HttpServlet {
         Path uploadPath = Paths.get(fullSavePath);
         Files.createDirectories(uploadPath);
 
-        Path resultPath = Paths.get(appPath + resultDirectory);
+        String fullResultDirectory = appPath + resultDirectory;
+        Path resultPath = Paths.get(fullResultDirectory);
         Files.createDirectories(resultPath);
+
+//        Path resultFile = Paths.get(fullResultDirectory + result)
+//        Files.deleteIfExists(resultPath);
+
 
         for (Part part : req.getParts()) {
             String fileName = part.getSubmittedFileName();
@@ -54,6 +62,7 @@ public class Servlet extends HttpServlet {
                 part.write(filePath);
             }
         }
+
 
         final FileVisitor2 visitor2 = new FileVisitor2();
 
@@ -82,6 +91,7 @@ public class Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
     }
+
 
 
 }
