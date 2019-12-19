@@ -20,7 +20,8 @@ import java.nio.file.Paths;
         maxRequestSize = 1024 * 1024 * 4)
 public class Servlet extends HttpServlet {
 
-    public static final String SAVE_DIRECTORY = "upload";
+    private String saveDirectory = "upload";
+    private String resultDirectory = "results";
 
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -31,10 +32,18 @@ public class Servlet extends HttpServlet {
         String appPath = req.getServletContext().getRealPath("");
 //        appPath = appPath.replace('\\', '/');
 
+//        System.out.println(getServletContext());
+//        System.out.println(getServletConfig());
+//        ServletContext context = getServletContext();
+//        System.out.println(context.getInitParameterNames());
+
         // The directory to save uploaded file
-        String fullSavePath = appPath + SAVE_DIRECTORY;
+        String fullSavePath = appPath + saveDirectory;
         Path uploadPath = Paths.get(fullSavePath);
         Files.createDirectories(uploadPath);
+
+        Path resultPath = Paths.get(appPath + resultDirectory);
+        Files.createDirectories(resultPath);
 
         for (Part part : req.getParts()) {
             String fileName = part.getSubmittedFileName();
@@ -49,7 +58,7 @@ public class Servlet extends HttpServlet {
         final FileVisitor2 visitor2 = new FileVisitor2();
 
         String textForSearch = req.getParameter("text");
-        System.out.println(textForSearch);
+        System.out.println("Searching text: " + textForSearch);
         System.out.println(appPath);
         visitor2.setSearchString(textForSearch);
         Files.walkFileTree(uploadPath, visitor2);

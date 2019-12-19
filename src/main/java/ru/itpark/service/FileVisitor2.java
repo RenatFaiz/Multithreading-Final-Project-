@@ -21,7 +21,7 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-
+            //file.
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("D:/Coding/Destination/result.txt", true));
              BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
