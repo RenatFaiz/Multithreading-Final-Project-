@@ -15,7 +15,7 @@
 <p> Text for search: <%= request.getParameter("text") %>
 </p>
 <%--<p> Text: ${results[0]} </p>--%>
-</p>
+
 <p>Ok </p>
 <p> Line match counts: ${counter} </p>
 <br>
