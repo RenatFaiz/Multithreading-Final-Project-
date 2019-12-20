@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
         maxFileSize = 1024 * 1024 * 3,
         maxRequestSize = 1024 * 1024 * 4)
-public class Servlet extends HttpServlet {
+public class MainServlet extends HttpServlet {
 
     private String saveDirectory = "upload";
     private String resultDirectory = "result";

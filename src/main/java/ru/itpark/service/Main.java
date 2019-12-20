@@ -1,17 +1,10 @@
 package ru.itpark.service;
 
-import ru.itpark.servlet.Servlet;
-
-import javax.servlet.ServletContext;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException, NoSuchMethodException {
