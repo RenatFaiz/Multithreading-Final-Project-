@@ -54,7 +54,7 @@ public class MainServlet extends HttpServlet {
 
             // Path to file with searching results
             final String resultFile = "results.txt";
-            String resultFilePath = fullResultDirectory + "\\" + resultFile;
+            String resultFilePath = fullResultDirectory + "/" + resultFile;
             Path resultFileP = Paths.get(resultFilePath);
             System.out.println("Путь к файлу c результатами: " + resultFilePath);
             Files.deleteIfExists(resultFileP);
@@ -65,7 +65,7 @@ public class MainServlet extends HttpServlet {
                 //if (part.getSubmittedFileName().startsWith("filename"))
                 if (fileName != null && fileName.length() > 0) {
                     System.out.println("Write attachment to file: " + fileName);
-                    String filePath = fullSavePath + "\\" + fileName;
+                    String filePath = fullSavePath + "/" + fileName;
                     part.write(filePath);
                     files.add(part.getSubmittedFileName());
                 }

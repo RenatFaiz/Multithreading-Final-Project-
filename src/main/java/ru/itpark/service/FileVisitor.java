@@ -18,7 +18,7 @@ public class FileVisitor extends SimpleFileVisitor<Path> {
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
-        String resultsPath = file.getParent().getParent().toString() + "\\result\\results.txt";
+        String resultsPath = file.getParent().getParent().toString() + "/result/results.txt";
 
 // String resultFile = file.toString().replace("upload", "result/results.txt");
 

@@ -13,7 +13,7 @@ public class DownloadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String appPath = req.getServletContext().getRealPath("");
-        String filePath = appPath + "result\\results.txt";
+        String filePath = appPath + "result/results.txt";
         String notFound = req.getContextPath() + "/error";
 
         try (FileReader reader = new FileReader(filePath)) {
