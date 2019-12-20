@@ -78,29 +78,11 @@ public class Servlet extends HttpServlet {
         visitor2.setSearchString(textForSearch);
         Files.walkFileTree(uploadPath, visitor2);
 
-//        PrintWriter out = resp.getWriter();
-        //resp.setContentType("APPLICATION/OCTET-STREAM");
-       // resp.setHeader("Content-Disposition","attachment; filename=\"" + resultFile + "\"");
-
-
-
         req.setAttribute("counter", visitor2.getMatchesCounter());
-        req.setAttribute("results", resultFile);
-//        List<String> results = visitor.getResult();
-//        req.setAttribute("results", results);
+
         getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
 
-//        String page = "/result.jsp";
-//        ServletContext context = getServletContext();
-//        RequestDispatcher dispatcher = context.getRequestDispatcher(page);
-//        dispatcher.forward(req, resp);
 
     }
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
-
 
 }

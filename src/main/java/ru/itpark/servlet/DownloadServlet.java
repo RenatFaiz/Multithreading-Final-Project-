@@ -5,39 +5,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
+
 
 @WebServlet("/download")
 public class DownloadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/plain");
-        resp.setHeader("Content-disposition","inline; filename=results.txt");
-
         String appPath = req.getServletContext().getRealPath("");
         String filePath = appPath + "result\\results.txt";
-        File resultFile = new File(filePath);
+        String notFound = req.getContextPath() + "/notfound";
 
-        OutputStream os = resp.getOutputStream();
-        FileInputStream is = new FileInputStream(resultFile);
-        byte[] buffer = new byte[4096];
-        int length;
+        try (FileReader reader = new FileReader(filePath)) {
+            resp.setContentType("text/plain");
+            resp.setHeader("Content-disposition", "inline; filename=results.txt");
+            PrintWriter writer = resp.getWriter();
+            int length;
+            while ((length = reader.read()) != -1) {
+                writer.write(length);
+            }
+            reader.close();
+            writer.flush();
 
-        while ((length = is.read(buffer)) > 0){
-            os.write(buffer, 0, length);
+        } catch (IOException e) {
+            e.printStackTrace();
+            resp.sendRedirect(notFound);
         }
 
-        // освободить ресурсы
-        is.close();
-        os.flush();
-        //
-        //use inline if you want to view the content in browser, helpful for pdf file
-        //response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\"");
-
     }
-
 }
 
+// Content Types: application/pdf, text/plain, text/html, image/jpg
+// response.setContentType("ТИП_ДАННЫХ_MIME");
+//response.setHeader("Content-disposition","attachment; filename=ВАШЕ_КАСТОМНОЕ_ИМЯ_ФАЙЛА.ext");
+
+//use inline if you want to view the content in browser (helpful for pdf file)
+// or to download only "Content-Disposition","attachment;
+//response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\"");

@@ -1,6 +1,5 @@
 package ru.itpark.service;
 
-import ru.itpark.servlet.Servlet;
 
 import java.io.*;
 import java.nio.file.FileVisitResult;
@@ -8,12 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 
 public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
@@ -27,10 +20,10 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
 
         String resultsPath = file.getParent().getParent().toString() + "/result/results.txt";
 
-//        String resultFile = file.toString().replace("upload", "result/results.txt");
-        // Files.createDirectories()
+// String resultFile = file.toString().replace("upload", "result/results.txt");
+
 // "D:/Coding/Destination/result.txt"
-        // System.out.println(servlet.getFullResultDirectory());
+
         System.out.println("Визитор: файл для поиска " + file);
         System.out.println("Визитор: файл с результатами " + resultsPath);
 
@@ -55,7 +48,6 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
         return FileVisitResult.CONTINUE;
     }
 
-
     public void setSearchString(String searchString) {
         this.searchString = searchString;
     }
@@ -64,11 +56,3 @@ public class FileVisitor2 extends SimpleFileVisitor<Path> {
         return matchesCounter;
     }
 }
-
-//    Pattern pattern = Pattern.compile(searchString);
-//            Matcher matcher = pattern.matcher(reader.);
-//           // boolean isFound = matcher.matches();
-//            while (matcher.find()) {
-//                result.add(matcher.group());
-//                wordsCounter++;
-//            }
