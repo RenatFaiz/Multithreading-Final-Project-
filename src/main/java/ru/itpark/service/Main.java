@@ -16,7 +16,7 @@ public class Main {
 
         Path path2 = Paths.get("D:\\Coding\\Обучение\\it-park\\Homeworks\\Multithreading " +
                 "(Final Project)\\target\\multi-threading-1.0\\upload");
-        final FileVisitor2 visitor2 = new FileVisitor2();
+        final FileVisitor visitor2 = new FileVisitor();
         visitor2.setSearchString("Hello");
         Path result = Paths.get("D:\\Coding\\Обучение\\it-park\\Homeworks\\Multithreading (Final Project)\\target\\multi-threading-1.0\\result");
         Files.createDirectories(result);

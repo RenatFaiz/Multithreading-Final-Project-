@@ -1,8 +1,3 @@
-<%@page import="ru.itpark.service.FileVisitor" %>
-<%@ page import="java.nio.file.Files" %>
-<%@ page import="java.nio.file.Path" %>
-<%@ page import="java.nio.file.Paths" %>
-<%@ page import="java.io.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>

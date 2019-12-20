@@ -1,51 +1,56 @@
 package ru.itpark.service;
 
-import java.io.IOException;
+
+import java.io.*;
 import java.nio.file.FileVisitResult;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 public class FileVisitor extends SimpleFileVisitor<Path> {
 
 
     private String searchString;
-    private List<String> result = new ArrayList<>();
+    private int matchesCounter;
+
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
-        Scanner scan = new Scanner(file);
-        int wordsCounter = 0;
+        String resultsPath = file.getParent().getParent().toString() + "\\result\\results.txt";
 
-        // scan.useDelimiter("(?m:^$)");
-        System.out.printf("[%s]:\n", file.getFileName());
-        result.add(file.getFileName().toString());
+// String resultFile = file.toString().replace("upload", "result/results.txt");
 
-        while (scan.hasNext()) {
-            String line = scan.nextLine();
-            // System.out.printf("%3d) %s%n", wordsCounter, line);
-            if (line.contains(searchString)) {
-              //  result.add(line);
-                System.out.println(line);
-                wordsCounter++;
+        System.out.println("Визитор: файл для поиска " + file);
+        System.out.println("Визитор: файл с результатами " + resultsPath);
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter((resultsPath), true));
+             BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
+
+
+            writer.write(file.getFileName().toString() + ": ");
+            int stringsCounter = 0;
+            String s;
+            while ((s = reader.readLine()) != null) {
+                if (s.contains(searchString)) {
+                    writer.write(s.strip() + "\n");
+                    stringsCounter++;
+                }
             }
+            matchesCounter += stringsCounter;
+
+            writer.write("Number of matches: " + stringsCounter + "\n\n");
         }
-        System.out.println("Number of matches: " + wordsCounter + "\n");
-        result.add("Number of matches: " + wordsCounter + "\n");
+        Files.deleteIfExists(file);
         return FileVisitResult.CONTINUE;
     }
-
-
 
     public void setSearchString(String searchString) {
         this.searchString = searchString;
     }
 
-    public List<String> getResult() {
-        return result;
+    public int getMatchesCounter() {
+        return matchesCounter;
     }
 }

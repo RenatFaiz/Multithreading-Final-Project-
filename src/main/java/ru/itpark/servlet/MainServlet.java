@@ -1,6 +1,6 @@
 package ru.itpark.servlet;
 
-import ru.itpark.service.FileVisitor2;
+import ru.itpark.service.FileVisitor;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -71,14 +71,14 @@ public class MainServlet extends HttpServlet {
                 }
             }
 
-            final FileVisitor2 visitor2 = new FileVisitor2();
+            final FileVisitor visitor = new FileVisitor();
             String textForSearch = req.getParameter("text");
             System.out.println("Searching text: " + textForSearch);
 
-            visitor2.setSearchString(textForSearch);
-            Files.walkFileTree(uploadPath, visitor2);
+            visitor.setSearchString(textForSearch);
+            Files.walkFileTree(uploadPath, visitor);
 
-            req.setAttribute("counter", visitor2.getMatchesCounter());
+            req.setAttribute("counter", visitor.getMatchesCounter());
             req.setAttribute("files", files);
             getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
 

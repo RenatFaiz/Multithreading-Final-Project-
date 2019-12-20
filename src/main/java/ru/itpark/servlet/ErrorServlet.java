@@ -14,7 +14,7 @@ public class ErrorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
 
-        try(PrintWriter writer = resp.getWriter()) {
+        try (PrintWriter writer = resp.getWriter()) {
             writer.println("<p> Something went wrong...( </p>");
         }
     }
