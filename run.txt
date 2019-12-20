@@ -2,3 +2,4 @@ Windows: java -cp "app\target\dependency\*" webapp.runner.launch.Main --port 888
 Linux: java -cp "app/target/dependency/*" webapp.runner.launch.Main --port 8888 app/target/*.war --enable-naming
 Heroku: UPLOAD_PATH=/tmp/upload java $JAVA_OPTS -cp "./app/target/dependency/*" webapp.runner.launch.Main --port $PORT ./app/target/*.war --enable-naming
 
+java -jar target/dependency/webapp-runner.jar target/*.war

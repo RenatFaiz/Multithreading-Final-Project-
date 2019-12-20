@@ -34,7 +34,7 @@ public class FileVisitor extends SimpleFileVisitor<Path> {
             String s;
             while ((s = reader.readLine()) != null) {
                 if (s.contains(searchString)) {
-                    writer.write(s.strip() + "\n");
+                    writer.write(s.trim() + "\n");
                     stringsCounter++;
                 }
             }
