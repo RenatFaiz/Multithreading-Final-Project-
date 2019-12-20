@@ -14,17 +14,14 @@
 <p><a href="index.html">Back to search</a></p>
 <br>
 <h2>Searching results</h2>
-<p> Text for search: <%= request.getParameter("text") %>
-</p>
-<%--<p> Text: ${results[0]} </p>--%>
-
+<p> Text for search:<b><%= request.getParameter("text") %></b></p>
 <p>Ok </p>
-<p> Line match counts: ${counter} </p>
+<p> Lines match count: ${counter} </p>
+<p><b>Files:</b> ${files}</p>
 <br>
-<a href="download" download>Download results from servlet</a>
-<br>
-<a href="download">Watch results from servlet</a>
-
+<a href="download" download>Download results</a>
+<br><br>
+<a href="download">Watch results</a>
 </body>
 </html>
 

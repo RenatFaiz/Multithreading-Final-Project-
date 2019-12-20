@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.LinkedList;
+import java.util.List;
 
 @WebServlet("/search")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
@@ -57,7 +59,7 @@ public class MainServlet extends HttpServlet {
             System.out.println("Путь к файлу c результатами: " + resultFilePath);
             Files.deleteIfExists(resultFileP);
 
-
+            List<String> files = new LinkedList<>();
             for (Part part : req.getParts()) {
                 String fileName = part.getSubmittedFileName();
                 //if (part.getSubmittedFileName().startsWith("filename"))
@@ -65,6 +67,7 @@ public class MainServlet extends HttpServlet {
                     System.out.println("Write attachment to file: " + fileName);
                     String filePath = fullSavePath + "\\" + fileName;
                     part.write(filePath);
+                    files.add(part.getSubmittedFileName());
                 }
             }
 
@@ -76,6 +79,7 @@ public class MainServlet extends HttpServlet {
             Files.walkFileTree(uploadPath, visitor2);
 
             req.setAttribute("counter", visitor2.getMatchesCounter());
+            req.setAttribute("files", files);
             getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
 
         } catch (ServletException | IOException e) {
