@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -38,20 +38,20 @@ public class MainServlet extends HttpServlet {
 //        System.out.println(context.getInitParameterNames());
 
             // The directory to save uploaded file
-            String saveDirectory = "upload";
+            final String saveDirectory = "upload";
             String fullSavePath = appPath + saveDirectory;
             Path uploadPath = Paths.get(fullSavePath);
             Files.createDirectories(uploadPath);
 
             // The directory to results folder
-            String resultDirectory = "result";
+            final String resultDirectory = "result";
             String fullResultDirectory = appPath + resultDirectory;
             Path resultPath = Paths.get(fullResultDirectory);
             Files.createDirectories(resultPath);
 
 
             // Path to file with searching results
-            String resultFile = "results.txt";
+            final String resultFile = "results.txt";
             String resultFilePath = fullResultDirectory + "\\" + resultFile;
             Path resultFileP = Paths.get(resultFilePath);
             System.out.println("Путь к файлу c результатами: " + resultFilePath);
@@ -76,9 +76,9 @@ public class MainServlet extends HttpServlet {
             Files.walkFileTree(uploadPath, visitor2);
 
             req.setAttribute("counter", visitor2.getMatchesCounter());
-
             getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
-        } catch (ServletException e) {
+
+        } catch (ServletException | IOException e) {
             e.printStackTrace();
             resp.sendRedirect(req.getContextPath() + "/notfound");
             throw new ServletException(e);

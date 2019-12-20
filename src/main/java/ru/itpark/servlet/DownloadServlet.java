@@ -30,6 +30,7 @@ public class DownloadServlet extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
             resp.sendRedirect(notFound);
+            throw new IOException(e);
         }
 
     }
