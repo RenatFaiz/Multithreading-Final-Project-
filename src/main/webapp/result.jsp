@@ -20,12 +20,18 @@
 <%--<p> Text: ${results[0]} </p>--%>
 <p> Number of matches: ${counter} </p>
 <br>
-<p><a href="${results}"> Watch results</a></p>
-<p><a href="${results}" download> Download results</a></p>
-<p><a href="${pageContext.request.contextPath}/search" download> Serc </a></p>
+<p><a href="${file}"> Watch results</a></p>
+<p><a href="${file}" download> Download results</a></p>
+<br>
+<p>JSP: ${file}</p>
+<p><a href="ROOT\result\results.txt" download> Download results</a></p>
+<br>
+<br>
+<a href="/download">скачать файл</a>
+<%--<p><a href="${pageContext.request.contextPath}/search" download> what1 </a></p>--%>
+
 
 <%--<p><a href="results/result.txt" download> Download results</a></p>--%>
-<p><a href="D:\Downloads\Soft for coding\apache-tomcat-9.0.27\webapps\ROOT\result\results.txt" download> Download results</a></p>
 <%--<p><% final FileVisitor visitor = new FileVisitor();--%>
 <%--    Path path = Paths.get("D:\\Coding\\Destination");--%>
 <%--    Path path1 = Paths.get("Destination/").toAbsolutePath();--%>

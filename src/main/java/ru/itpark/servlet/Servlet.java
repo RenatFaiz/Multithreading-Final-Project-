@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -49,11 +51,12 @@ public class Servlet extends HttpServlet {
         Path resultPath = Paths.get(fullResultDirectory);
         Files.createDirectories(resultPath);
 
+
         // Path to file with searching results
-        String resultFilePath = fullResultDirectory + "/" + resultFile;
-        Path resultFile = Paths.get(resultFilePath);
+        String resultFilePath = fullResultDirectory + "\\" + resultFile;
+        Path resultFileP = Paths.get(resultFilePath);
         System.out.println("Путь к файлу c результатами: " + resultFilePath);
-        Files.deleteIfExists(resultFile);
+        Files.deleteIfExists(resultFileP);
 
 
         for (Part part : req.getParts()) {
@@ -61,7 +64,7 @@ public class Servlet extends HttpServlet {
             //if (part.getSubmittedFileName().startsWith("filename"))
             if (fileName != null && fileName.length() > 0) {
                 System.out.println("Write attachment to file: " + fileName);
-                String filePath = fullSavePath + "/" + fileName;
+                String filePath = fullSavePath + "\\" + fileName;
                 part.write(filePath);
             }
         }
@@ -75,11 +78,14 @@ public class Servlet extends HttpServlet {
         visitor2.setSearchString(textForSearch);
         Files.walkFileTree(uploadPath, visitor2);
 
-//        //PrintWriter writer = resp.getWriter();
-//
+//        PrintWriter out = resp.getWriter();
+        //resp.setContentType("APPLICATION/OCTET-STREAM");
+       // resp.setHeader("Content-Disposition","attachment; filename=\"" + resultFile + "\"");
+
+
 
         req.setAttribute("counter", visitor2.getMatchesCounter());
-        req.setAttribute("results", resultFilePath);
+        req.setAttribute("results", resultFile);
 //        List<String> results = visitor.getResult();
 //        req.setAttribute("results", results);
         getServletContext().getRequestDispatcher("/result.jsp").forward(req, resp);
