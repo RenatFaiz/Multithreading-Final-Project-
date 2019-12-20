@@ -80,7 +80,7 @@ public class MainServlet extends HttpServlet {
 
         } catch (ServletException | IOException e) {
             e.printStackTrace();
-            resp.sendRedirect(req.getContextPath() + "/notfound");
+            resp.sendRedirect(req.getContextPath() + "/error");
             throw new ServletException(e);
         }
 

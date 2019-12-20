@@ -11,6 +11,8 @@
     <title>RFC search</title>
 </head>
 <body>
+<p><a href="index.html">Back to search</a></p>
+<br>
 <h2>Searching results</h2>
 <p> Text for search: <%= request.getParameter("text") %>
 </p>
@@ -19,9 +21,9 @@
 <p>Ok </p>
 <p> Line match counts: ${counter} </p>
 <br>
-<a href="/download" download>Download results from servlet</a>
+<a href="download" download>Download results from servlet</a>
 <br>
-<a href="/download">Watch results from servlet</a>
+<a href="download">Watch results from servlet</a>
 
 </body>
 </html>
