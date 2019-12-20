@@ -15,7 +15,7 @@ public class DownloadServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/plain");
-        resp.setHeader("Content-disposition","attachment; filename=results.txt");
+        resp.setHeader("Content-disposition","inline; filename=results.txt");
 
         String appPath = req.getServletContext().getRealPath("");
         String filePath = appPath + "result\\results.txt";
@@ -33,6 +33,11 @@ public class DownloadServlet extends HttpServlet {
         // освободить ресурсы
         is.close();
         os.flush();
+        //
+        //use inline if you want to view the content in browser, helpful for pdf file
+        //response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\"");
 
     }
+
 }
+
