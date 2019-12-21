@@ -19,14 +19,3 @@
 <a href="download">Watch results</a>
 </body>
 </html>
-
-
-<%--    String textForSearch = request.getParameter("text");--%>
-<%--    out.println(textForSearch);--%>
-<%--    visitor.setSearchString(textForSearch);--%>
-<%--<p> Buffered: <%= request.getReader().lines() %>--%>
-<%--    PrintWriter writer = response.getWriter();--%>
-<%--    writer.println(Files.walkFileTree(path, visitor));--%>
-<%--    out.println(path);--%>
-
-

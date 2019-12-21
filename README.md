@@ -1,4 +1,4 @@
-#Поиск текста [![Build Status](https://travis-ci.com/RenatFaiz/Multithreading-Final-Project-.svg?branch=master)](https://travis-ci.com/RenatFaiz/Multithreading-Final-Project-) ![Heroku](https://heroku-badge.herokuapp.com/?app=search-text-multi) 
+#Поиск текста [![Build Status](https://travis-ci.com/RenatFaiz/search-text-rfc.svg?branch=develop)](https://travis-ci.com/RenatFaiz/search-text-rfc) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=search-text-multi&style=flat) 
 
 Проект	– поисковая	система с веб
 интерфейсом и следующими функциями:

@@ -32,12 +32,6 @@ public class MainServlet extends HttpServlet {
 
             // Gets absolute path to root directory of web app.
             String appPath = req.getServletContext().getRealPath("");
-//        appPath = appPath.replace('\\', '/');
-            System.out.println("Директория приложения " + appPath);
-//        System.out.println(getServletContext());
-//        System.out.println(getServletConfig());
-//        ServletContext context = getServletContext();
-//        System.out.println(context.getInitParameterNames());
 
             // The directory to save uploaded file
             final String saveDirectory = "upload";
@@ -51,30 +45,26 @@ public class MainServlet extends HttpServlet {
             Path resultPath = Paths.get(fullResultDirectory);
             Files.createDirectories(resultPath);
 
-
             // Path to file with searching results
             final String resultFile = "results.txt";
             String resultFilePath = fullResultDirectory + "/" + resultFile;
             Path resultFileP = Paths.get(resultFilePath);
-            System.out.println("Путь к файлу c результатами: " + resultFilePath);
             Files.deleteIfExists(resultFileP);
 
             List<String> files = new LinkedList<>();
             for (Part part : req.getParts()) {
+
                 String fileName = part.getSubmittedFileName();
-                //if (part.getSubmittedFileName().startsWith("filename"))
                 if (fileName != null && fileName.length() > 0) {
-                    System.out.println("Write attachment to file: " + fileName);
                     String filePath = fullSavePath + "/" + fileName;
                     part.write(filePath);
                     files.add(part.getSubmittedFileName());
                 }
             }
 
+            // Searching through downloaded files
             final FileVisitor visitor = new FileVisitor();
             String textForSearch = req.getParameter("text");
-            System.out.println("Searching text: " + textForSearch);
-
             visitor.setSearchString(textForSearch);
             Files.walkFileTree(uploadPath, visitor);
 
@@ -87,7 +77,5 @@ public class MainServlet extends HttpServlet {
             resp.sendRedirect(req.getContextPath() + "/error");
             throw new ServletException(e);
         }
-
     }
-
 }

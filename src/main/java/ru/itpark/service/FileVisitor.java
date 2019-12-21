@@ -1,6 +1,5 @@
 package ru.itpark.service;
 
-
 import java.io.*;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -10,24 +9,16 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 public class FileVisitor extends SimpleFileVisitor<Path> {
 
-
     private String searchString;
     private int matchesCounter;
-
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 
         String resultsPath = file.getParent().getParent().toString() + "/result/results.txt";
 
-// String resultFile = file.toString().replace("upload", "result/results.txt");
-
-        System.out.println("Визитор: файл для поиска " + file);
-        System.out.println("Визитор: файл с результатами " + resultsPath);
-
         try (BufferedWriter writer = new BufferedWriter(new FileWriter((resultsPath), true));
              BufferedReader reader = new BufferedReader(new FileReader(file.toString()))) {
-
 
             writer.write(file.getFileName().toString() + ": ");
             int stringsCounter = 0;

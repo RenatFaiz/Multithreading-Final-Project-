@@ -35,11 +35,3 @@ public class DownloadServlet extends HttpServlet {
 
     }
 }
-
-// Content Types: application/pdf, text/plain, text/html, image/jpg
-// response.setContentType("ТИП_ДАННЫХ_MIME");
-//response.setHeader("Content-disposition","attachment; filename=ВАШЕ_КАСТОМНОЕ_ИМЯ_ФАЙЛА.ext");
-
-//use inline if you want to view the content in browser (helpful for pdf file)
-// or to download only "Content-Disposition","attachment;
-//response.setHeader("Content-Disposition","inline; filename=\"" + filename + "\"");
