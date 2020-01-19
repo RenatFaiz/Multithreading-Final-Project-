@@ -1,5 +1,5 @@
 # Поиск текста [![Build Status](https://travis-ci.com/RenatFaiz/search-text-rfc.svg?branch=develop)](https://travis-ci.com/RenatFaiz/search-text-rfc) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=search-text-multi&style=flat) 
-https://search-text-multi.herokuapp.com/index.html \
+https://search-text-multi.herokuapp.com/index.html 
 
 Проект	– поисковая	система с веб
 интерфейсом и следующими функциями:
